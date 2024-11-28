@@ -18,7 +18,7 @@ const ButtonStyleMapping = {
   [ButtonStyle.Secondary]: 'secondary',
   [ButtonStyle.Success]: 'success',
   [ButtonStyle.Danger]: 'destructive',
-  [ButtonStyle.Link]: 'secondary',
+  [ButtonStyle.Link]: 'secondary'
 } as const;
 
 export function Component({ component, id }: { component: MessageActionRowComponent; id: number }) {
@@ -26,7 +26,7 @@ export function Component({ component, id }: { component: MessageActionRowCompon
     return (
       <DiscordButton
         key={id}
-        type={ButtonStyleMapping[component.style]}
+        type={ButtonStyleMapping[component.style as keyof typeof ButtonStyleMapping]}
         url={component.url ?? undefined}
         emoji={component.emoji ? parseDiscordEmoji(component.emoji) : undefined}
       >
