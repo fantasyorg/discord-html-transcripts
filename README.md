@@ -95,6 +95,10 @@ const attachment = await discordTranscripts.createTranscript(channel, {
       resolveChannel: (channelId: string) => Awaitable<Channel | null>,
       resolveUser: (userId: string) => Awaitable<User | null>,
       resolveRole: (roleId: string) => Awaitable<Role | null>
+      resolveImageSrc: new TranscriptImageDownloader()
+              .withCompression(10, true) // 10% of real quality
+              .withMaxSize(1024 * 8) // 8 MB
+              .build()
     },
     poweredBy: true, // Whether to include the "Powered by discord-html-transcripts" footer
     hydrate: true, // Whether to hydrate the html server-side
